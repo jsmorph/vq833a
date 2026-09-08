@@ -73,34 +73,36 @@ the public repository and metadata and requests editorial review.
 
 ## Recorded results
 
-The initial prepared copy, committed as
-`430e668b94d600fe5fa042f4d331fbe2d89b289d`, passed these checks on
-8 September 2026:
+Commit
+[`6bbe2c6c06e3ddf536f119454f041f09cb32611a`](https://github.com/jsmorph/vq833a/tree/6bbe2c6c06e3ddf536f119454f041f09cb32611a)
+passed the full Palomar mechanical workflow on 8 September 2026 at
+22:51:52 UTC.  The checker sources matched published PalomarSubmission
+revision
+[`ef2fa1eadcb246c2346ddba39b52eaa53d4bb763`](https://github.com/PalomarRegistry/PalomarSubmission/tree/ef2fa1eadcb246c2346ddba39b52eaa53d4bb763)
+byte for byte before and after execution.
 
 | Check | Result |
 |---|---|
-| Source identity | Every Lean file and fixed build input matches the recorded source revision |
-| Import audit | The included Lean files equal the union of the Challenge and Solution import trees.  Challenge imports Mathlib. |
-| Source-rehashing build | Challenge and Solution pass with exit status zero |
+| Full workflow | Report status `pass`, stage `complete`, and exit status zero |
+| Source identity | The checker fetched the published commit from GitHub.  The checkout remained clean and matched the local source by checksum. |
+| Canonical Challenge | The protected statement compiles against verified canonical Mathlib |
+| Solution | A fresh build passes inside the checker's confined environment |
 | Complete comparison | Every configured statement and the supplied program definition pass comparison |
 | Axiom audit | The transitive axioms satisfy the configured restriction |
 | NanoDa | The unchanged checker accepts the Solution export |
 | Independent Lean kernel | The checker accepts the Solution export |
-| Metadata and documentation | Metadata validation, local links, whitespace checks, and exact report arithmetic pass |
+| Repository checks | Metadata, MIT-license detection, dependency provenance, and source checks pass |
+| Local audit | Import coverage, document links, whitespace checks, and exact report arithmetic pass |
 
-Build job `vq833a-build-20260908-1` ran from 15:22:34 to 15:30:01 UTC.
-Comparison job `vq833a-comparison-20260908-1` returned zero after
-16 minutes 27.69 seconds, with peak resident memory 7,278,456 KiB.
-Both ran on Linux x86-64 with 20 GiB memory high, 24 GiB maximum, zero
-swap, four CPUs, and a 2,400-second limit.  Source and runner checksum
-comparisons passed before execution.  The final source comparison also
-passed after the independent checks.
+The checker reported a non-blocking warning about Challenge's preferred
+review length.  The enforced source limits passed.  Lean also reports
+existing deprecation, unused-argument, and exponentiation-threshold warnings.
 
-These times and memory figures describe proof checking on the verification
-host.  The algorithm's logical resources are specified in the report and
-proved in Lean.  Metadata validation used PalomarSubmission revision
-`c605f23466450a52999fcfb3c6d68ed8febc56bf`.  The source-identity audit also
-compared the retained inputs with the original checked proof revision
-`9d865f6f2ea73ec456bed87356b70ac8dd9d7f73`.
+The Comparator phase, including the fresh Solution build, took 1,348.402
+seconds, with peak resident memory 7,283,428 KiB, on Linux x86-64.  Host
+resource controls limited checker services to 40 GiB and eight CPUs, with
+zero swap.  Preparation and full execution both returned zero.
+The retained machine report has SHA-256
+`7ff103c3ddea1b704b675035025c5c6cfaadf4564a10aac330950fc5d373d7f3`.
 
 Palomar editorial review and registration remain pending.
