@@ -1,0 +1,102 @@
+version: v0.4
+
+project:
+  name: An 833-qubit secp256k1 discrete-logarithm program
+  description: >-
+    A Lean verification of a complete semiclassical double-scalar quantum
+    program for secp256k1 ECDLP, parameterized by the public point.  The
+    result specifies complex branch amplitudes, workspace restoration,
+    selected-outcome decoding, and an analytic recovery probability greater
+    than 99/100 over 26 independent executions.  It proves a fixed allocation
+    of 833 logical qubits and 768 mutable classical bits, with exactly
+    588551462912 compiled CCZ operations on every path and in expectation.
+    Functional correctness and recovery assume a valid public key Q = dG
+    with 0 < d < q and the specified initialization.  Repetition uses a
+    finite product law.  Physical noise, approximate phase synthesis, and
+    compiled repetition and decoding costs require further results.
+  authors:
+    - name: Jamie Stephens
+  license: MIT
+  responsible_maintainers:
+    - js@morphism.com
+
+classification:
+  arxiv:
+    - quant-ph
+    - cs.CR
+    - cs.LO
+
+sources:
+  - title: Windowed Euclidean Arithmetic in an 833-Qubit secp256k1 ECDLP Program
+    authors:
+      - name: Jamie Stephens
+    type: paper
+    relationship: formalizes
+    id: https://github.com/jsmorph/vq833a
+    location: docs/report.md in the submitted repository revision, dated 8 September 2026
+    note: >-
+      The submission states the complete logical-program result through an
+      independent complex-amplitude specification and proves its connection
+      to the VQ construction.  The proofs use propositional extensionality,
+      classical choice, and quotient soundness.  The source report describes
+      the allocation, analytic recovery bound, and pathwise and expected CCZ count.
+  - title: Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer
+    authors:
+      - name: Peter W. Shor
+    type: paper
+    relationship: background
+    id: https://doi.org/10.1137/S0097539795293172
+    note: Quantum Fourier-sampling approach to the discrete-logarithm problem.
+  - title: Shor's Discrete Logarithm Quantum Algorithm for Elliptic Curves
+    authors:
+      - name: John Proos
+      - name: Christof Zalka
+    type: paper
+    relationship: background
+    id: https://doi.org/10.26421/QIC3.4-3
+    note: Elliptic-curve double-scalar computation and reversible arithmetic.
+
+  - title: Quantum Algorithm for Elliptic Curve Discrete Logarithms with Space-Efficient Point Addition
+    authors:
+      - name: Han Luo
+      - name: Ziyi Yang
+      - name: Jingquan Luo
+      - name: Ziruo Wang
+      - name: Yuexin Su
+      - name: Xiaoming Sun
+      - name: Lvzhou Li
+      - name: Tongyang Li
+    type: paper
+    relationship: adapts
+    id: https://arxiv.org/abs/2607.13816v2
+    note: >-
+      The packed Euclidean design adapts length-controlled register sharing.
+      The endpoint selector follows the pruned prefix tree in the companion
+      source at
+      https://github.com/ZeroWang030221/Quantum-Algorithm-for-Elliptic-Curve-Discrete-Logarithms-with-Space-Efficient-Point-Addition/tree/e64aa3c1198d96aeb389e64bc7ae48edbb9712ec.
+      The submitted complete-program allocation, recovery, and gate-count
+      claims are stated in docs/report.md and the public Lean specification.
+
+automation:
+  methods:
+    - method: agent
+      tool: OpenAI Codex
+      role: >-
+        AI-assisted mathematical analysis, proof construction, source review,
+        documentation, and execution of checking tools under maintainer direction.
+    - method: other
+      tools:
+        - Lean 4.34.0-rc2
+        - Comparator
+        - lean4export
+        - NanoDa
+      role: >-
+        Check proof terms, agreement between the public statement and Solution,
+        and the transitive axiom restriction.  Exact tool revisions and test
+        results are recorded in docs/verification.md.
+
+review:
+  status: >-
+    Lean compilation, complete Comparator statement and axiom checks, and
+    independent NanoDa and Lean proof checks pass.  Palomar editorial review
+    and human peer review remain pending.

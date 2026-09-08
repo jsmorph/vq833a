@@ -1,0 +1,24 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Palomar833.p_prime",
+    "Palomar833.q_prime",
+    "Palomar833.discriminant_nonzero",
+    "Palomar833.generator_valid",
+    "Palomar833.generator_order",
+    "Palomar833.branch_amplitudes",
+    "Palomar833.workspace_clean",
+    "Palomar833.outcome_law",
+    "Palomar833.selected_probability",
+    "Palomar833.selected_recovers",
+    "Palomar833.repeated_probability",
+    "Palomar833.repeated_recovers",
+    "Palomar833.register_bounds",
+    "Palomar833.path_ccz_count",
+    "Palomar833.expected_ccz_count"
+  ],
+  "definition_names": ["Palomar833.algorithm"],
+  "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "enable_nanoda": true
+}
