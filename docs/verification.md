@@ -5,8 +5,9 @@
 The definitions, proofs, toolchain selection, comparison configuration, and
 license come from VQ branch `833` at
 `a9c56bf24a8e1db3b35a6193ff87ef200d91b8d9`.  Dependency cleanup removed
-an unused matrix package and its source comment.  The definitions and proofs
-retain their original text.
+an unused matrix package and its source comment.  Challenge documentation
+explains each compared claim and the definitions used by those claims.
+The definitions, theorem statements, and proofs retain their original code.
 
 The [public statement](../Challenge.lean) gives the algorithm's mathematical
 specification.  Its proof holes are the inputs to the statement comparison.
@@ -105,4 +106,55 @@ zero swap.  Preparation and full execution both returned zero.
 The retained machine report has SHA-256
 `7ff103c3ddea1b704b675035025c5c6cfaadf4564a10aac330950fc5d373d7f3`.
 
-Palomar editorial review and registration remain pending.
+## Submission
+
+Palomar editorial review and registration await maintainer authorization.
+The [submission policy](https://github.com/PalomarRegistry/PalomarPolicy/blob/main/CONTRIBUTING.md)
+defines the repository requirements.  The
+[protocol specification](https://github.com/PalomarRegistry/PalomarPolicy/blob/main/docs/specification.md)
+governs verification, review, registration, and publication.  The
+[agent instructions](https://submit.palomar-registry.org/llms.txt)
+describe the API.  The binding policy takes precedence when a summary differs.
+
+| Submission field | Selection |
+|---|---|
+| Repository | `jsmorph/vq833a` |
+| Commit | Full SHA of the chosen public commit |
+| Project directory | Repository root |
+| Comparator configuration | Explicit path `comparator.json` |
+| Metadata | `formalization.yaml` |
+| Authorization relationship | `maintainer`, after confirmation by the person authorizing submission |
+
+The metadata records `quant-ph`, `cs.CR`, and `cs.LO`.  The current policy
+accepts these classifications and permits omission of MSC codes.
+
+Before intake, the maintainer confirms the repository, full commit SHA,
+Comparator path, and authorization relationship.  The agent route requires
+authenticated GitHub access that can create and delete a repository tag and
+a secret gist.  After `POST /api/submit`, the agent creates the requested tag
+at the chosen commit and a fresh secret gist containing Palomar's challenge,
+then calls `POST /api/verify`.  These steps must finish within 15 minutes.
+After successful authentication, the agent deletes the tag and gist and
+retains the returned access token as a private credential.  Browser sign-in
+requires the human submitter.
+
+Palomar runs its verification workflow on the chosen commit.  A mechanical
+pass starts the private editorial review.  The agent monitors
+`GET /api/submission` with the access token and retrieves the review through
+`GET /api/review`.  The documented polling interval is one minute during
+execution and five minutes while awaiting review.  Corrected source enters
+as a new submission at a new commit.
+
+The repository, commit, authorization declaration, and mechanical workflow
+are public from verification onward.  Operators, GitHub, and the model
+provider can access the private review, which Palomar retains indefinitely.
+
+Registration requires a separate maintainer decision after reading the
+delivered review.  If the review identifies no blocking problem and the
+maintainer approves publication, `POST /register` carries that review's
+exact `review_sha256`.  Registration publishes the record and redacted
+review and preserves the source and dependencies in public forks with
+immutable tags.  It creates permanent publication history when Palomar
+merges the database change.  The maintainer can withdraw while the submission
+is awaiting a registration decision.
+Later corrections use a new version of the existing Palomar identifier.

@@ -21,7 +21,9 @@ independent Lean and NanoDa checks.  Their transitive axioms are confined to
 
 | Claim | Scope |
 |---|---|
+| Curve arithmetic | The field characteristic and subgroup order are prime.  The curve is nonsingular, and the standard base point has canonical coordinates on the curve and exact order `q`. |
 | Functional correctness | Both scalar loops, exact branch amplitudes, restored quantum workspace, and preserved immutable input under the stated initialization and public-key hypotheses |
+| Outcome distribution | Nonnegative outcome masses summing to one for every public-point code and immutable input, starting with zero quantum and mutable classical registers |
 | Quantum allocation | Exactly 833 logical qubits, giving a peak-live upper bound |
 | Classical allocation | 768 mutable bits and zero declared immutable input bits |
 | Toffoli-class cost | Exactly 588,551,462,912 compiled CCZ operations on every execution path, for every public-point code |
@@ -43,6 +45,7 @@ the public execution preserves its amplitudes, measurement probabilities,
 recovery guarantees, and resource counts.  The complete Challenge/Solution
 comparison and independent Lean and NanoDa checks pass for the source revision
 identified in the [verification guide](docs/verification.md).
+That guide also records the [submission procedure](docs/verification.md#submission).
 The [technical report](docs/report.md) explains the algorithm, proof structure,
 resource calculations, and limits.  The [submission metadata](formalization.yaml)
 records authorship, sources, automation, and review.
