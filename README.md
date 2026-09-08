@@ -49,7 +49,7 @@ records authorship, sources, automation, and review.
 
 ## Build
 
-The project pins Lean 4.34.0-rc2, Mathlib, and `hex-matrix` in
+The project pins Lean 4.34.0-rc2 and Mathlib in
 `lean-toolchain`, `lakefile.toml`, and `lake-manifest.json`.  The
 [Lean installation guide](https://lean-lang.org/install/manual/) describes
 Elan installation.

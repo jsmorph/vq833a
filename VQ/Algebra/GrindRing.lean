@@ -3,8 +3,7 @@
 
 `grind` normalises a ring expression by reading its operations off this class,
 so registering it lets `grind` prove a symbolic identity over `Cyc d` or `Dy d`
-rather than only a concrete one.  `hex-matrix` requires the same class of a
-coefficient type.
+rather than only a concrete one.
 
 The ring laws are the theorems already proven in `VQ.Algebra.Cyc` and
 `VQ.Algebra.Dyadic`.  Beyond them the class asks for numerals, casts from `Nat`

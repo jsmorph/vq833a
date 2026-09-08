@@ -2,10 +2,11 @@
 
 ## Source identity
 
-The Lean files, Lake configuration, dependency manifest, toolchain selection,
-comparison configuration, and license come from VQ branch `833` at
-`a9c56bf24a8e1db3b35a6193ff87ef200d91b8d9`.
-The prepared copy preserves those proof and build inputs byte for byte.
+The definitions, proofs, toolchain selection, comparison configuration, and
+license come from VQ branch `833` at
+`a9c56bf24a8e1db3b35a6193ff87ef200d91b8d9`.  Dependency cleanup removed
+an unused matrix package and its source comment.  The definitions and proofs
+retain their original text.
 
 The [public statement](../Challenge.lean) gives the algorithm's mathematical
 specification.  Its proof holes are the inputs to the statement comparison.
@@ -36,7 +37,6 @@ fixed Lean version and dependency revisions.
 |---|---|
 | Lean | `leanprover/lean4:v4.34.0-rc2` |
 | Mathlib | `85e3a25e006c35636f0e53b0e9296caca2685bc0` |
-| `hex-matrix` | `d45bf749d6283726b8df43b5be9e6dde350666d6` |
 
 The manifest fixes the remaining transitive dependencies.  Build output
 belongs in the ignored `.lake` directory.
@@ -73,7 +73,9 @@ the public repository and metadata and requests editorial review.
 
 ## Recorded results
 
-The prepared copy passed these checks on 8 September 2026:
+The initial prepared copy, committed as
+`430e668b94d600fe5fa042f4d331fbe2d89b289d`, passed these checks on
+8 September 2026:
 
 | Check | Result |
 |---|---|
